@@ -16,3 +16,8 @@ inner join enfermaria e on e.idenfermaria=pe.idenfermaria
 inner join treinador t on pe.idtreinador=t.idtreinador
 inner join pokemon_capturado pc on pe.idpokemon=pc.idpokemon and pe.idtreinador=pc.idtreinador
 inner join pokemon p on p.idpokemon=pc.idpokemon;
+
+create view equipe_treinador as
+select e.nome nome_equipe, t.nome nome_treinador, qtd_insignias, genero, if(idLider=idtreinador,'Líder','') lider
+from equipe e
+inner join treinador t on t.idequipe=e.idequipe;
